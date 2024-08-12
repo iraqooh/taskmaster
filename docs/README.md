@@ -64,7 +64,11 @@ Basic knowledge of command-line operations
 Clone the repository: ```git clone https://github.com/iraqooh/taskmaster.git```
 ```cd taskmaster```
 
-Compile the application: ```gcc -o taskmaster main.c```
+Compile the Application
+
+Make sure Make is installed on your system. Run the following command in your terminal: ```make```
+
+This will compile the application and place the executable in the bin directory.
 
 Run the application: ```bin\taskmaster``` on Windows or ```./bin/taskmaster``` on Linux.
 
