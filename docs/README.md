@@ -66,9 +66,9 @@ Clone the repository: ```git clone https://github.com/iraqooh/taskmaster.git```
 
 Compile the Application
 
-Make sure Make is installed on your system. Run the following command in your terminal: ```make```
+Make sure the GNU Make Utility is installed on your system. Run the following command in your terminal: ```make```
 
-This will compile the application and place the executable in the bin directory.
+This will compile the application and place the executable in the bin directory. If you don't have the Make utility installed, use: ```gcc -o bin\taskmaster src\main.c src\task.c src\storage.c src\menu.c src\utils.c``` on Windows or ```gcc -o bin/taskmaster src/main.c src/task.c src/storage.c src/menu.c src/utils.c``` on Unix-like systems.
 
 Run the application: ```bin\taskmaster``` on Windows or ```./bin/taskmaster``` on Linux.
 
