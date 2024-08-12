@@ -2,3 +2,13 @@
 *.o
 *.exe
 *.csv
+/bin/
+!bin/
+obj/
+!obj/
+/data/
+!data/
+/tests/bin/
+!tests/bin/
+/tests/obj/
+!tests/obj/
