@@ -1,5 +1,5 @@
 .vscode/
-bin/*taskmaster.exe
+bin/taskmaster.exe
 data/tasks.csv
 obj/*.o
 tests/bin/*.exe
