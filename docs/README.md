@@ -66,7 +66,7 @@ Clone the repository: ```git clone https://github.com/iraqooh/taskmaster.git```
 
 Compile the application: ```gcc -o taskmaster main.c```
 
-Run the application: ```./taskmaster```
+Run the application: ```bin\taskmaster``` on Windows or ```./bin/taskmaster``` on Linux.
 
 ## Usage
 

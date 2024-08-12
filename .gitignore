@@ -1,4 +1,6 @@
 .vscode/
-**/*.o
-**/bin/*
-**/*.csv
+bin/*taskmaster.exe
+data/tasks.csv
+obj/*.o
+tests/bin/*.exe
+tests/obj/*.o
