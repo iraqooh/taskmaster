@@ -1,0 +1,13 @@
+.vscode/
+*.o
+/bin/
+!bin/
+obj/
+!obj/
+tasks.csv
+/data/
+!data/
+/tests/bin/
+!tests/bin/
+/tests/obj/
+!tests/obj/
