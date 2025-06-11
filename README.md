@@ -118,6 +118,6 @@ Contributions are welcome! Please fork the repository and open a pull request wi
 
 ## 📬 Contact
 
-For any queries or suggestions, reach out via [email@example.com].
+For any queries or suggestions, reach out via [iraqooh@gmail.com].
 
 Empower your productivity with Taskamaster – the open-source way to manage tasks effectively.
