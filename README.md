@@ -31,7 +31,9 @@
 - Fully documented using **Swagger / OpenAPI**
 - **Token-based access control** for secure endpoints
 
----
+## ✨ Live Demo
+
+(Taskmaster Deployment)[TBD]
 
 ## 🛠 Tech Stack
 
@@ -41,7 +43,7 @@
 | Backend       | Express.js       |
 | Authentication| JSON Web Tokens  |
 | Database      | MongoDB          |
-| API Docs      | Swagger / OpenAPI|
+| API Docs      | Swagger          |
 | Styling       | TailwindCSS      |
 
 ---
@@ -51,7 +53,7 @@
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/iraqooh/taskamaster.git
+git clone https://github.com/iraqooh/taskmaster.git
 cd taskamaster
 ```
 
@@ -75,18 +77,31 @@ npm run dev
 ## 📂 Project Structure
 
 ```pgsql
-taskamaster/
+taskmaster/
 ├── backend/
 │   ├── controllers/
+│   ├── jobs/
+│   ├── middleware/
 │   ├── models/
 │   ├── routes/
-│   ├── middleware/
-│   ├── docs/ (Swagger)
+│   ├── utils/
+│   ├── package.json
+│   ├── swagger.yaml
 │   └── server.js
+├── docs/
 ├── frontend/
-│   ├── components/
-│   ├── pages/
-│   └── App.js
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── contexts/
+│   │   ├── lib/
+│   │   ├── pages/
+│   │   ├── App.tsx/
+│   │   ├── index.css/
+│   │   └── main.tsx/
+│   ├── package.json
+│   ├── index.html
+│   └── vite.config.ts
 ├── LICENSE
 └── README.md
 ```

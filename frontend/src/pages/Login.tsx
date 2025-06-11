@@ -1,0 +1,71 @@
+import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
+const Login = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await login(form.email, form.password);
+      navigate('/');
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Login failed.');
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-white p-8 rounded shadow"
+      >
+        <h2 className="text-2xl font-bold mb-6">Login</h2>
+
+        {error && <p className="text-red-600 mb-4">{error}</p>}
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          className="w-full mb-4 p-2 border rounded"
+          required
+        />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+          className="w-full mb-6 p-2 border rounded"
+          required
+        />
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-2 rounded"
+        >
+          Login
+        </button>
+      </form>
+      <div className="m-4">Don't have an account? Sign up <a href="/register" className='text-blue-600 font-bold'>here</a>.</div>
+    </div>
+  );
+};
+
+export default Login;

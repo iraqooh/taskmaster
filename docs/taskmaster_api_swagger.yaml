@@ -1,0 +1,290 @@
+openapi: 3.0.3
+info:
+  title: To-Do App API
+  description: Swagger specification for a full-featured To-Do app
+  version: 1.0.0
+servers:
+  - url: https://api.todoapp.com/v1
+
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegister'
+      responses:
+        '201':
+          description: User created
+
+  /auth/login:
+    post:
+      summary: Login user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        '200':
+          description: Successful login
+
+  /tasks:
+    get:
+      summary: List all tasks
+      responses:
+        '200':
+          description: List of tasks
+    post:
+      summary: Create a new task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskCreate'
+      responses:
+        '201':
+          description: Task created
+
+  /tasks/{taskId}:
+    get:
+      summary: Get task details
+      parameters:
+        - in: path
+          name: taskId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Task details
+    patch:
+      summary: Update task
+      parameters:
+        - in: path
+          name: taskId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskUpdate'
+      responses:
+        '200':
+          description: Task updated
+    delete:
+      summary: Delete task
+      parameters:
+        - in: path
+          name: taskId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Task deleted
+
+  /categories:
+    get:
+      summary: List all categories
+      responses:
+        '200':
+          description: List of categories
+    post:
+      summary: Create a new category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreate'
+      responses:
+        '201':
+          description: Category created
+
+  /categories/{categoryId}:
+    patch:
+      summary: Update a category
+      parameters:
+        - in: path
+          name: categoryId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdate'
+      responses:
+        '200':
+          description: Category updated
+    delete:
+      summary: Delete a category
+      parameters:
+        - in: path
+          name: categoryId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Category deleted
+
+  /reminders:
+    get:
+      summary: List reminders
+      responses:
+        '200':
+          description: List of reminders
+    post:
+      summary: Create a new reminder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReminderCreate'
+      responses:
+        '201':
+          description: Reminder created
+
+  /reminders/{reminderId}:
+    patch:
+      summary: Update a reminder
+      parameters:
+        - in: path
+          name: reminderId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReminderUpdate'
+      responses:
+        '200':
+          description: Reminder updated
+    delete:
+      summary: Delete a reminder
+      parameters:
+        - in: path
+          name: reminderId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Reminder deleted
+
+components:
+  schemas:
+    UserRegister:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - email
+        - password
+
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+        - email
+        - password
+
+    TaskCreate:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        due_date:
+          type: string
+          format: date-time
+        priority:
+          type: string
+          enum: [Low, Medium, High, Urgent]
+        category_id:
+          type: string
+      required:
+        - title
+
+    TaskUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        due_date:
+          type: string
+          format: date-time
+        priority:
+          type: string
+          enum: [Low, Medium, High, Urgent]
+        status:
+          type: string
+          enum: [Pending, Completed, Archived]
+        category_id:
+          type: string
+
+    CategoryCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        color:
+          type: string
+      required:
+        - name
+
+    CategoryUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        color:
+          type: string
+
+    ReminderCreate:
+      type: object
+      properties:
+        task_id:
+          type: string
+        remind_at:
+          type: string
+          format: date-time
+      required:
+        - task_id
+        - remind_at
+
+    ReminderUpdate:
+      type: object
+      properties:
+        remind_at:
+          type: string
+          format: date-time
